@@ -20,7 +20,12 @@ func main() {
 	// Init Leaper Attacks
 	attacks.InitLeaperAttacks()
 
-	board.FENParser("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR")
-	//var bitboard = Bitboard(0)
-	//print_bitboard(bitboard)
+	// Init occupancy board
+	block := board.Bitboard(0)
+	block = board.SetBit(block, board.D7)
+	block = board.SetBit(block, board.C4)
+	block = board.SetBit(block, board.D3)
+	block = board.SetBit(block, board.G4)
+
+	//board.FENParser("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR")
 }

@@ -5,40 +5,34 @@ import "github.com/theflippantfox/chessengine/packages/board"
 // Knight attacks table
 var KnightAttacks [64]board.Bitboard
 
-// Generate rook attack table
+// Generate knight attack table
 func MaskKnightAttacks(square int) board.Bitboard {
-	// Result attacks bitboard
 	attacks := board.Bitboard(0)
 
-	// Piece bitboard
-	bitboard := board.Bitboard(0)
+	// Knight move offsets
+	moves := []int{
+		17, 15, 10, 6, // Moves in positive directions
+		-17, -15, -10, -6, // Moves in negative directions
+	}
 
-	// Set piece on board
-	bitboard = board.SetBit(bitboard, square)
+	// File restrictions for each knight move
+	masks := []board.Bitboard{
+		not_h_file, not_a_file, not_gh_file, not_ab_file, // Positive moves
+		not_a_file, not_h_file, not_ab_file, not_gh_file, // Negative moves
+	}
 
-	if (bitboard >> 17 & not_h_file) != 0 {
-		attacks = (attacks | (bitboard >> board.Bitboard(17)))
-	}
-	if (bitboard >> 15 & not_a_file) != 0 {
-		attacks = (attacks | (bitboard >> board.Bitboard(15)))
-	}
-	if (bitboard >> 10 & not_gh_file) != 0 {
-		attacks = (attacks | (bitboard >> board.Bitboard(10)))
-	}
-	if (bitboard >> 6 & not_ab_file) != 0 {
-		attacks = (attacks | (bitboard >> board.Bitboard(6)))
-	}
-	if (bitboard << 17 & not_a_file) != 0 {
-		attacks = (attacks | (bitboard << board.Bitboard(17)))
-	}
-	if (bitboard << 15 & not_h_file) != 0 {
-		attacks = (attacks | (bitboard << board.Bitboard(15)))
-	}
-	if (bitboard << 10 & not_ab_file) != 0 {
-		attacks = (attacks | (bitboard << board.Bitboard(10)))
-	}
-	if (bitboard << 6 & not_gh_file) != 0 {
-		attacks = (attacks | (bitboard << board.Bitboard(6)))
+	for i, move := range moves {
+		targetSquare := square + move
+
+		// Ensure the move stays within bounds
+		if targetSquare < 0 || targetSquare >= 64 {
+			continue
+		}
+
+		// Apply file restriction to prevent wrapping
+		if (board.Bitboard(1)<<square)&masks[i] != 0 {
+			attacks |= board.Bitboard(1) << targetSquare
+		}
 	}
 
 	return attacks
