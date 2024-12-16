@@ -1,6 +1,6 @@
 package board
 
-import "github.com/theflippantfox/chessengine/packages/pieces"
+import "github.com/tsukinoyako/chessengine/pkg/pieces"
 
 func FENParser(fen string) {
 	bitboard := Bitboard(0)

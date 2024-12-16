@@ -1,6 +1,6 @@
 package attacks
 
-import "github.com/theflippantfox/chessengine/packages/board"
+import "github.com/tsukinoyako/chessengine/pkg/board"
 
 // To avoid jumping across the board
 const not_a_file board.Bitboard = 18374403900871474942

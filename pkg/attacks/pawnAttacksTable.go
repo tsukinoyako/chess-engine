@@ -1,6 +1,6 @@
 package attacks
 
-import "github.com/theflippantfox/chessengine/packages/board"
+import "github.com/tsukinoyako/chessengine/pkg/board"
 
 // Pawn attacks table
 var PawnAttacks [2][64]board.Bitboard

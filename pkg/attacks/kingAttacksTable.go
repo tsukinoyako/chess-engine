@@ -1,6 +1,6 @@
 package attacks
 
-import "github.com/theflippantfox/chessengine/packages/board"
+import "github.com/tsukinoyako/chessengine/pkg/board"
 
 // King attacks table
 var KingAttacks [64]board.Bitboard

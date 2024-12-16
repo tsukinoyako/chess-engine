@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/theflippantfox/chessengine/packages/attacks"
-	"github.com/theflippantfox/chessengine/packages/board"
+	"github.com/tsukinoyako/chessengine/pkg/attacks"
+	"github.com/tsukinoyako/chessengine/pkg/board"
 )
 
 /*

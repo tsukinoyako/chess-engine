@@ -1,6 +1,9 @@
 dev:
-	go run cmd/main.go 
+	go run .
 
-build:
+build: clean
 	mkdir build
-	go build -o build/chess cmd/main.go 
+	go build -o bin/chess 
+
+clean: 
+	rm -rf bin 

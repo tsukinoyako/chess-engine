@@ -1,7 +1,7 @@
 package attacks
 
 import (
-	"github.com/theflippantfox/chessengine/packages/board"
+	"github.com/tsukinoyako/chessengine/pkg/board"
 )
 
 // Generate rook attacks
