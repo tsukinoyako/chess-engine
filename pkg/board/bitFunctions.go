@@ -18,11 +18,22 @@ func ClearBit(bb Bitboard, square int) Bitboard {
 func CountBits(bb Bitboard) int {
 	count := 0
 
+	// 0 means a clear board
 	for bb > 0 {
 		count++
 
+		// Remove one bit at time
 		bb = bb & (bb - 1)
 	}
 
 	return count
+}
+
+// Get lest significant bit index
+func GetLeastSignificantBitIndex(bitboard Bitboard) int {
+	if bitboard != 0 {
+		return CountBits((bitboard & -bitboard) - 1)
+	} else {
+		return -1
+	}
 }

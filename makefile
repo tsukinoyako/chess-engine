@@ -1,4 +1,4 @@
-dev:
+run:
 	go run .
 
 build: clean
